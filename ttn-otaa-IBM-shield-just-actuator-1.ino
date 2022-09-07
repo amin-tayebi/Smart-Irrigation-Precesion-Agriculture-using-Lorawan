@@ -112,6 +112,7 @@ void onEvent (ev_t ev) {
             digitalWrite(valve1_pin, HIGH);
             delay(2000);
             digitalWrite(valve1_pin, LOW);
+              levelinfo.sensor.payload[0] = 1;
           }
 
           if (result == 2)  {
@@ -119,6 +120,7 @@ void onEvent (ev_t ev) {
             digitalWrite(valve1_pin, HIGH);
             delay(2000);
             digitalWrite(valve1_pin, LOW);
+              levelinfo.sensor.payload[0] = 2;
           }
 
           if (result == 3)  {
@@ -126,13 +128,19 @@ void onEvent (ev_t ev) {
             digitalWrite(valve1_pin, HIGH);
             delay(10000);
             digitalWrite(valve1_pin, LOW);
+              levelinfo.sensor.payload[0] = 3 ;
           }
 
           else
+          
             {Serial.println("VALVE__1 number in not valid");}
+              levelinfo.sensor.payload[0] = 404;
+
         
+
+
         }
-          levelinfo.sensor.payload[0] = valve1_pin ;
+//          levelinfo.sensor.payload[0] = valve1_pin ;
         Serial.println();
         //-----------------------------
 
