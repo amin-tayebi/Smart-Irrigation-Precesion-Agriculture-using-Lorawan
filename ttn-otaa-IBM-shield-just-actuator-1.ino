@@ -128,10 +128,11 @@ void onEvent (ev_t ev) {
             digitalWrite(valve1_pin, LOW);
           }
 
-          levelinfo.sensor.payload[0] = valve1_pin ;
-
-
+          else
+            {Serial.println("VALVE__1 number in not valid");}
+        
         }
+          levelinfo.sensor.payload[0] = valve1_pin ;
         Serial.println();
         //-----------------------------
 
