@@ -105,6 +105,7 @@ void onEvent (ev_t ev) {
           if (result == 0)  {
             Serial.println("VALVE__1 is OFF ");
             digitalWrite(valve1_pin, LOW);
+             levelinfo.sensor.payload[0] = 0;
           }
 
           if (result == 1)  {
