@@ -1,5 +1,5 @@
 function doGet(e) {
-  var x = HtmlService.createTemplateFromFile("");
+  var x = HtmlService.createTemplateFromFile("<PUT the name of html file without postfix like: index>");
   var y = x.evaluate();
   var z = y.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
   return z;
