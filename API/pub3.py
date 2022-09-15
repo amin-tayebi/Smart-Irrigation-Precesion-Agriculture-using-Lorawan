@@ -6,6 +6,8 @@
  * to do whatever they want with them without any restriction,
  * including, but not limited to, copying, modification and redistribution.
  * NO WARRANTY OF ANY KIND IS PROVIDED.
+ *
+ * The script should be run on venv mode
  *******************************************************************************/
 
 
