@@ -8,6 +8,8 @@
  * NO WARRANTY OF ANY KIND IS PROVIDED.
  *
  * The script should be run on venv mode
+ * 
+ * The code should be run using python3
  *******************************************************************************/
 
 
