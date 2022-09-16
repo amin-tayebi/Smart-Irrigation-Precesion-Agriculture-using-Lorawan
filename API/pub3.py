@@ -7,9 +7,7 @@
  * including, but not limited to, copying, modification and redistribution.
  * NO WARRANTY OF ANY KIND IS PROVIDED.
  *
- * The script should be run on venv mode
- * 
- * The code should be run using python3
+ * The script should be run on venv mode in python3
  *******************************************************************************/
 
 
