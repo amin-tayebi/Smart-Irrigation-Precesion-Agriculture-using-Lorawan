@@ -1,3 +1,5 @@
-Here payloads are not encoded while in sub.py in API the payloads are decoded.
+issues with above code:
 
-Another issue here is that it crash and ends the code while receiving a SIMULATED uplink or a DOWNlink
+# Here payloads are not encoded while in sub.py in API the payloads are decoded.
+
+# Another issue here is that it crash and ends the code while receiving a SIMULATED uplink or a DOWNlink.
