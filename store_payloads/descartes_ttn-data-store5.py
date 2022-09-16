@@ -1,16 +1,13 @@
 #!/usr/bin/python3
 
-User = "arduinosdi1222222222222222"
-Password  = "NNSXS.OAOMV2ADRMBDJZZVWU2QHMDACYEBDJXG2NKNCFY.IT5GJMVYEEJYI6J7LR6A45Y3ONZTBZQQU7JLF4M4SKFUHEEBUNUA"
+User = "app name in ttn cosole"
+Password  = "NNSXS.XXX"
 theRegion = "EU1"		# The region you are using
 
 
-
-#VER  = "2021-05-24 v1.2"
 import os, sys, logging, time
 print(os.path.basename(__file__) + " ")
 
-#print("Imports:")
 import paho.mqtt.client as mqtt
 import json
 import csv
