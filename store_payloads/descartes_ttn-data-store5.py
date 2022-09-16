@@ -14,9 +14,9 @@ import csv
 from datetime import datetime
 
 
-print("Functions:")
+# ------------------------------------------------------------------------Functions:
 
-# Write uplink to tab file
+# Write uplink to file
 def saveToFile(someJSON):
 	
 	# 4 main components in json from ttn
@@ -75,7 +75,7 @@ def saveToFile(someJSON):
 		fw.writerow([received_at, f_port, f_cnt, frm_payload, rssi, snr, data_rate, consumed_airtime])
 
 
-# MQTT event functions
+# ------------------------------------------------------------------------ MQTT event functions
 def on_connect(mqttc, obj, flags, rc):
     print("\nConnect: rc = " + str(rc))
 
@@ -95,7 +95,7 @@ def on_log(mqttc, obj, level, string):
 
 
 
-print("Body of program:")
+# ------------------------------------------------------------------------ Body of program:
 
 print("Init mqtt client")
 mqttc = mqtt.Client()
@@ -107,7 +107,7 @@ mqttc.on_message = on_message
 #mqttc.on_log = on_log		# Logging for debugging OK, waste
 
 print("Connect")
-# Setup authentication from settings above
+# ------------------------------------------------------------------------ Setup authentication from settings above
 mqttc.username_pw_set(User, Password)
 
 
