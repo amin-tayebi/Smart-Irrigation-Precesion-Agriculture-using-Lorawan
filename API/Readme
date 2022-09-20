@@ -1,1 +1,8 @@
 The point to use the above codes is to run them in on venv mode in python3
+
+Do below command in env mode:
+Install pip context
+
+I used python version 3.8 and pip version 22.2.2
+
+# Each module separately are located above, but main program which is able to do smart irrigation with the process is smart_irrigation.py
