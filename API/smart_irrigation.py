@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# This module: 1- subscribe to the application in TTN (any lorawan server) to read paylods of nano-IoT33 measures
+#              2- Speparate the moinsture sensor payloads
+#              3- Process each 2 message (as msg_count is 2) if it is less than 70% or not
+#              4- Publish to the application in TTN (any lorawan server) to TURN ON solenoid Valve for 10 seconds (possible to be modified in arduino code)
 import context
 import paho.mqtt.subscribe as subscribe
 
@@ -13,8 +17,8 @@ import sys
 # --------------------------------------------------------------subscribing function
 message = subscribe.simple(topics=['#'], \
                            hostname="eu1.cloud.thethings.network", port=1883, \
-                           auth={'username': "arduinosdi1222222222222222", \
-                                 'password': "NNSXS.RDHIBKJLMCRK2TQOVZMB35HYHIZZHRLNUBU3FRA.US4FXZIZW7DGKFWCZOKPX7BKGMG4TESJXN26OJPP5BPMO3PFVZCA"},
+                           auth={'username': "app name", \
+                                 'password': "NNSXS.XXX"},
                            msg_count=2)
 # write output on 1.txt in the current path 
 sys.stdout = open("1.txt", "w")
@@ -40,4 +44,5 @@ for line in open("1.txt"):
         t2 = t.replace('\n', '')
         print(t2)
         # convert string to int and do comparison
-if (int(t2) < 90):publish.single("v3/arduinosdi1222222222222222@ttn/devices/eui-70b3d57ed0054220/down/push", '{"downlinks":[{"f_port": 16,"frm_payload":"Aw==","priority": "NORMAL"}]}', hostname="eu1.cloud.thethings.network", port=1883, auth={'username': "arduinosdi1222222222222222", 'password': "NNSXS.RDHIBKJLMCRK2TQOVZMB35HYHIZZHRLNUBU3FRA.US4FXZIZW7DGKFWCZOKPX7BKGMG4TESJXN26OJPP5BPMO3PFVZCA"})
+if (int(t2) < 90):publish.single("v3/<app name>@ttn/devices/<dev eui>/down/push", '{"downlinks":[{"f_port": 16,"frm_payload":"Aw==","priority": "NORMAL"}]}', hostname="eu1.cloud.thethings.network", port=1883, auth={'username': "<app name>", 'password': "NNSXS.XXX"})
+  # Aw== is 03 which open valve for 10 seconds
