@@ -1,8 +1,19 @@
-#!/usr/bin/env python3
-# This module: 1- subscribe to the application in TTN (any lorawan server) to read paylods of nano-IoT33 measures
-#              2- Speparate the moinsture sensor payloads
+# This module: 1- subscribe to the application in TTN (any lorawan server) to read payloads of nano-IoT33 measures
+#              2- Speparate the moisture sensor payloads
 #              3- Process each 2 message (as msg_count is 2) if it is less than 70% or not
-#              4- Publish to the application in TTN (any lorawan server) to TURN ON solenoid Valve for 10 seconds (possible to be modified in arduino code)
+#              4- If below 70% then Publish downlink to the application in TTN (any lorawan server) to TURN ON solenoid Valve for 10 seconds (possible to be modified in arduino code)
+/*******************************************************************************
+ * Copyright (c) 2022 amin TAYEBI
+ *
+ * Permission is hereby granted, free of charge, to anyone
+ * obtaining a copy of this document and accompanying files,
+ * to do whatever they want with them without any restriction,
+ * including, but not limited to, copying, modification and redistribution.
+ * NO WARRANTY OF ANY KIND IS PROVIDED.
+ *
+ * The script should be run on venv mode in python3
+ *******************************************************************************/
+#!/usr/bin/env python3
 import context
 import paho.mqtt.subscribe as subscribe
 
