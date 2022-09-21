@@ -12,7 +12,7 @@
  * 
  * Functionality:
  * This mosule read sensor data every 10 minutes and if "moisture is below 70%" open the Actuator (solenoid valve)
- * and it continue until "moisture reaches above 70%"
+ * and it continue until "moisture reaches above 70%", and it reapeats forever.
  *******************************************************************************/
 
 
