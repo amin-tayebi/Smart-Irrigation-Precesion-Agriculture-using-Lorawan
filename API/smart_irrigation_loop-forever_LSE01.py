@@ -63,7 +63,7 @@ def subscribe(client: mqtt_client):
         #print(t2)
         # convert string to int and do comparison
          if (int(t) < 40):
-            #print(t , "moisture is below 60%")
+            print(t , "moisture is below 60%")
             publish.single("v3/<app name>@ttn/devices/<dev-eui-actuator>/down/push",
                            '{"downlinks":[{"f_port": 17,"frm_payload":"Aw==","priority": "NORMAL"}]}',
                            hostname="eu1.cloud.thethings.network", port=1883,
