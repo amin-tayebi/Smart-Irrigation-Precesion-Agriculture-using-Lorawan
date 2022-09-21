@@ -7,8 +7,14 @@
  * including, but not limited to, copying, modification and redistribution.
  * NO WARRANTY OF ANY KIND IS PROVIDED.
  *
+ * Setup invironment to run:
  * The script should be run on venv mode in python3
+ * 
+ * Functionality:
+ * This mosule read sensor data every 10 minutes and if "moisture is below 70%" open the Actuator (solenoid valve)
+ * and it continue until "moisture reaches above 70%"
  *******************************************************************************/
+
 
 #!/usr/bin/env python3
 import random
@@ -61,7 +67,7 @@ def subscribe(client: mqtt_client):
         #t2 = t.replace('\n', '')
         #print(t2)
         # convert string to int and do comparison
-         if (int(t) < 90):
+         if (int(t) < 70):
             print(t , "moisture is below 70%")
             publish.single("v3/<APPLICATION NAME>@ttn/devices/<ACTUATOR DEV EUI>/down/push",
                            '{"downlinks":[{"f_port": 16,"frm_payload":"Aw==","priority": "NORMAL"}]}',
