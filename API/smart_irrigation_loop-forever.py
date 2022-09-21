@@ -1,3 +1,15 @@
+/*******************************************************************************
+ * Copyright (c) 2022 amin TAYEBI
+ *
+ * Permission is hereby granted, free of charge, to anyone
+ * obtaining a copy of this document and accompanying files,
+ * to do whatever they want with them without any restriction,
+ * including, but not limited to, copying, modification and redistribution.
+ * NO WARRANTY OF ANY KIND IS PROVIDED.
+ *
+ * The script should be run on venv mode in python3
+ *******************************************************************************/
+
 #!/usr/bin/env python3
 import random
 from paho.mqtt import client as mqtt_client
@@ -7,11 +19,11 @@ import sys
 
 broker = 'eu1.cloud.thethings.network'
 port = 1883
-topic = "v3/arduinosdi1222222222222222@ttn/devices/nanoiot33eui-70b3d57ed005529e/up"
+topic = "v3/<APPLICATION NAME>@ttn/devices/<SENSOR DEV EUI>/up"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 100)}'
-username = 'arduinosdi1222222222222222'
-password = 'NNSXS.RDHIBKJLMCRK2TQOVZMB35HYHIZZHRLNUBU3FRA.US4FXZIZW7DGKFWCZOKPX7BKGMG4TESJXN26OJPP5BPMO3PFVZCA'
+username = '<APPLICATION NAME>'
+password = 'NNSXS.XXX'
 
 # write output on 1.txt in the current path
 #sys.stdout = open("1.txt", "w")
@@ -51,11 +63,11 @@ def subscribe(client: mqtt_client):
         # convert string to int and do comparison
          if (int(t) < 90):
             print(t , "moisture is below 70%")
-            publish.single("v3/arduinosdi1222222222222222@ttn/devices/eui-70b3d57ed0054220/down/push",
+            publish.single("v3/<APPLICATION NAME>@ttn/devices/<ACTUATOR DEV EUI>/down/push",
                            '{"downlinks":[{"f_port": 16,"frm_payload":"Aw==","priority": "NORMAL"}]}',
                            hostname="eu1.cloud.thethings.network", port=1883,
-                           auth={'username': "arduinosdi1222222222222222",
-                                 'password': "NNSXS.RDHIBKJLMCRK2TQOVZMB35HYHIZZHRLNUBU3FRA.US4FXZIZW7DGKFWCZOKPX7BKGMG4TESJXN26OJPP5BPMO3PFVZCA"})
+                           auth={'username': "<APPLICATION NAME>",
+                                 'password': "NNSXS.XXX"})
 
 
     client.subscribe(topic)
