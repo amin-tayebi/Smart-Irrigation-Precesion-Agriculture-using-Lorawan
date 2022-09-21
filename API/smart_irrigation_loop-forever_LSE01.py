@@ -1,3 +1,19 @@
+/*******************************************************************************
+ * Copyright (c) 2022 amin TAYEBI
+ *
+ * Permission is hereby granted, free of charge, to anyone
+ * obtaining a copy of this document and accompanying files,
+ * to do whatever they want with them without any restriction,
+ * including, but not limited to, copying, modification and redistribution.
+ * NO WARRANTY OF ANY KIND IS PROVIDED.
+ *
+ * Setup invironment to run:
+ * The script should be run on venv mode in python3
+ * 
+ * Functionality:
+ * This mosule read sensor dragino LSE01 data and if "moisture is below 40%" open the Actuator (solenoid valve)
+ * and it continue until "moisture reaches above 40%", and it reapeats forever.
+ *******************************************************************************/
 #!/usr/bin/env python3
 import random
 from paho.mqtt import client as mqtt_client
@@ -7,14 +23,11 @@ import sys
 
 broker = 'eu1.cloud.thethings.network'
 port = 1883
-topic = "v3/app-3@ttn/devices/eui-a840419e918220ed-lse01/up"
+topic = "v3/<app-name>@ttn/devices/device eui-lse01/up"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 100)}'
-username = 'app-3'
-password = 'NNSXS.MVFULYOGEG4B5XBPRN4WHC2QHRF2IPSBDAQ7PVA.TF65V52GWNEIE7WAGQX6RHIK6RDVDBN3UXONDZKTN6DWYE4L2PAQ'
-
-# write output on 1.txt in the current path
-#sys.stdout = open("output.csv", "w")
+username = '<app-name>'
+password = 'NNSXS.XXX'
 
 def connect_mqtt() -> mqtt_client:
     def on_connect(client, userdata, flags, rc):
@@ -51,11 +64,11 @@ def subscribe(client: mqtt_client):
         # convert string to int and do comparison
          if (int(t) < 40):
             #print(t , "moisture is below 60%")
-            publish.single("v3/arduinosdi1222222222222222@ttn/devices/eui-70b3d57ed0054220/down/push",
+            publish.single("v3/<app name>@ttn/devices/<dev-eui-actuator>/down/push",
                            '{"downlinks":[{"f_port": 17,"frm_payload":"Aw==","priority": "NORMAL"}]}',
                            hostname="eu1.cloud.thethings.network", port=1883,
-                           auth={'username': "arduinosdi1222222222222222",
-                                 'password': "NNSXS.RDHIBKJLMCRK2TQOVZMB35HYHIZZHRLNUBU3FRA.US4FXZIZW7DGKFWCZOKPX7BKGMG4TESJXN26OJPP5BPMO3PFVZCA"})
+                           auth={'username': "<app name>",
+                                 'password': "NNSXS.XXX"})
 
 
     client.subscribe(topic)
