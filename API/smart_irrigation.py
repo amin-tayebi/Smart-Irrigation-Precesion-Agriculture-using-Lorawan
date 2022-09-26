@@ -56,4 +56,5 @@ for line in open("1.txt"):
         print(t2)
         # convert string to int and do comparison
 if (int(t2) < 90):publish.single("v3/<app name>@ttn/devices/<dev eui>/down/push", '{"downlinks":[{"f_port": 16,"frm_payload":"Aw==","priority": "NORMAL"}]}', hostname="eu1.cloud.thethings.network", port=1883, auth={'username': "<app name>", 'password': "NNSXS.XXX"})
-  # Aw== is 03 which open valve for 10 seconds
+  # Aw== is 03 
+  # as I defined in the arduino uno code if downlink was 03 => open valve for 10 seconds
