@@ -15,7 +15,7 @@ for line in open("1.txt"):
         alist = line.split('Moisture_percentage":')
         
         #from the remain string, take the 2 first chars 
-        t = alist[-1][:2]
+        t = alist[1][:2]
         
         #remove \n 
         print(t.replace('\n', ''))
