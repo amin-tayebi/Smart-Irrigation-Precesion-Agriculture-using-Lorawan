@@ -11,7 +11,7 @@
 # The script should be run on venv mode in python3
 # 
 # Functionalities:
-# - This mosule read sensor dragino LSE01 data and if "moisture is below 30%" open the Actuator (solenoid valve)
+# - This mosule read sensor dragino LSE01 data and if "moisture is below 30%" open the Actuator (solenoid valve) for 2 seconds (defined on actuator downlink)
 # - Reapeats forever
 # - Works also with moisture value even 0  or 100 while previus versions just worked with moisture value 10-99
 # *******************************************************************************/
