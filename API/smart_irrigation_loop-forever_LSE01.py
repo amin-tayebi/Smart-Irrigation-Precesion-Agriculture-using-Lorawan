@@ -1,19 +1,19 @@
-/*******************************************************************************
- * Copyright (c) 2022 amin TAYEBI
- *
- * Permission is hereby granted, free of charge, to anyone
- * obtaining a copy of this document and accompanying files,
- * to do whatever they want with them without any restriction,
- * including, but not limited to, copying, modification and redistribution.
- * NO WARRANTY OF ANY KIND IS PROVIDED.
- *
- * Setup invironment to run:
- * The script should be run on venv mode in python3
- * 
- * Functionality:
- * This mosule read sensor dragino LSE01 data and if "moisture is below 40%" open the Actuator (solenoid valve)
- * and it continue until "moisture reaches above 40%", and it reapeats forever.
- *******************************************************************************/
+#*******************************************************************************
+# Copyright (c) 2022 amin TAYEBI
+#
+# Permission is hereby granted, free of charge, to anyone
+# obtaining a copy of this document and accompanying files,
+# to do whatever they want with them without any restriction,
+# including, but not limited to, copying, modification and redistribution.
+# NO WARRANTY OF ANY KIND IS PROVIDED.
+#
+# Setup invironment to run:
+# The script should be run on venv mode in python3
+# 
+# Functionalities:
+# - This mosule read sensor dragino LSE01 data and if "moisture is below 30%" open the Actuator (solenoid valve) for 2 seconds (defined on actuator downlink)
+# - Continue until "moisture reaches above 40%", and it reapeats forever.
+# *******************************************************************************
 #!/usr/bin/env python3
 import random
 from paho.mqtt import client as mqtt_client
@@ -64,6 +64,8 @@ def subscribe(client: mqtt_client):
         # convert string to int and do comparison
          if (int(t) < 40):
             print(t , "moisture is below 60%")
+            
+        # "Aw==" is euqal to 03 which defined on actuator if this downlink received open the valve for 10 seconds
             publish.single("v3/<app name>@ttn/devices/<dev-eui-actuator>/down/push",
                            '{"downlinks":[{"f_port": 17,"frm_payload":"Aw==","priority": "NORMAL"}]}',
                            hostname="eu1.cloud.thethings.network", port=1883,
