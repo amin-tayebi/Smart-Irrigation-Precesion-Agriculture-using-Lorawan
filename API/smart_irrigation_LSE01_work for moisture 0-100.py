@@ -27,7 +27,7 @@ import csv
 
 broker = 'eu1.cloud.thethings.network'
 port = 1883
-topic = "v3/app-3@ttn/devices/<dev eui>/up"
+topic = "v3/<>app id@ttn/devices/<dev eui>/up"
 # generate client ID with pub prefix randomly
 client_id = f'python-mqtt-{random.randint(0, 100)}'
 username = '<app-key>'
@@ -77,8 +77,10 @@ def subscribe(client: mqtt_client):
 
             if (payload2 < 30):
              print(payload2, "%:   moisture is below 30%")
+            
+        # "Ag==" is euqal to 02 which defined on actuator if this downlink received open the valve for 3 seconds
              publish.single("v3/<app id>@ttn/devices/<actuator dev eui->/down/push",
-                           '{"downlinks":[{"f_port": 16,"frm_payload":"Aw==","priority": "NORMAL"}]}',
+                           '{"downlinks":[{"f_port": 16,"frm_payload":"Ag==","priority": "NORMAL"}]}',
                            hostname="eu1.cloud.thethings.network", port=1883,
                            auth={'username': "<app id>",
                                  'password': "NNSXS.XXX"})
