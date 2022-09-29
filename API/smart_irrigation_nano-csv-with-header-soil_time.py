@@ -78,16 +78,10 @@ def subscribe(client: mqtt_client):
             payload = re.search('Moisture_percentage":(.*),"Valve', line)
             p = payload.group(1)
 
-            # convert re.match to float
-            #payload = float(payload.group(1))
-
             # convert float to int
             payloadi = int(p)
 
             # write payloads to csv file online
-            # with open('sensor_payloads_nano.csv', 'a') as f:
-            #     writer_object = writer(f)
-            #     writer_object.writerow(payload2)
             file_name = open('sensor_payloads_nano.csv', 'a')
             fields = []
             fields.append('Payload')
