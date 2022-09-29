@@ -50,7 +50,8 @@ def connect_mqtt() -> mqtt_client:
     return client
 
 
-file_name = open('new_file.csv', 'a')
+# create a csv file with header to write payloads to csv file online
+file_name = open('sensor_payloads_nano.csv', 'a')
 fields = []
 fields.append('Payload')
 fields.append('Payload_time')
@@ -79,14 +80,15 @@ def subscribe(client: mqtt_client):
 
 
             # convert re.match to float
-            payload = float(payload.group(1))
+            payloadf = float(p)
 
             # convert float to int
-            payload2 = int(payload)
+            payloadi = int(payloadf)
 
-            print(payload2)
+            print(payloadi)
 
-            file_name = open('new_file.csv', 'a')
+            # write payloads to csv file 
+            file_name = open('LSE01_sensor_moisture.csv', 'a')
             fields = []
             fields.append('Payload')
             fields.append('Payload_time')
