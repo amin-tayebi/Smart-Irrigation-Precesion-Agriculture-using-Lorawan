@@ -136,7 +136,12 @@ void onEvent (ev_t ev) {
 
             levelinfo.sensor.payload[1] = 3 ;
           }
-
+     else
+          
+            {Serial.println("VALVE__1 number in not valid");}
+              levelinfo.sensor.payload[0] = 404;
+          
+          
         }
         Serial.println();
         //-----------------------------
