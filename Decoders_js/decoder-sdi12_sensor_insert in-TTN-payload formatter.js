@@ -1,3 +1,4 @@
+//to show "6 payloads for Moisture_percentage" and "6 soil temperature" and "a battery voltage"
 function Decoder(bytes, port) {
    var data = {};
   data.T1 = ( bytes[1] << 8 | bytes[0])/1000;
